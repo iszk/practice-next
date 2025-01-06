@@ -1,0 +1,27 @@
+{
+    "name": "practice-next",
+    "dockerComposeFile": [
+        "../compose.yml",
+        "./compose.override.yml"
+    ],
+    "service": "practice-next-console",
+    "workspaceFolder": "/workspace",
+    "initializeCommand": "bash .devcontainer/initialize_command.sh",
+    "overrideCommand": false,
+    "customizations": {
+        "vscode": {
+            "settings": {
+                // ファイル保存時に自動でフォーマット
+                "editor.formatOnSave": true,
+                // ファイル保存時に行末に改行を挿入
+                "files.insertFinalNewline": true,
+                // ファイル保存時に最終行以降の空行を削除
+                "files.trimFinalNewlines": true,
+                // ファイル保存時に各行の末尾にある半角スペースを削除
+                "files.trimTrailingWhitespace": true
+            },
+            "extensions": [
+            ]
+        }
+    }
+}

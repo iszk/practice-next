@@ -1,0 +1,18 @@
+services:
+
+  practice-next-console:
+    container_name: practice-next-console
+    user: "1000:1000"
+    build:
+      context: ./console
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - type: bind
+        source: .
+        target: /workspace
+        consistency: delegated
+    tty: true
+    stdin_open: true
+    init: true
+
