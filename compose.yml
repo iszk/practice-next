@@ -1,7 +1,7 @@
 services:
 
-  practice-next-console:
-    container_name: practice-next-console
+  console:
+    container_name: console
     user: "1000:1000"
     build:
       context: ./console
@@ -12,7 +12,31 @@ services:
         source: .
         target: /workspace
         consistency: delegated
+      - type: volume
+        source: nextjs-dashboard-node_modules
+        target: /workspace/nextjs-dashboard/node_modules
     tty: true
     stdin_open: true
     init: true
+    command: "/bin/bash console/entrypoint.sh noexit"
 
+  nextjs-dashboard:
+    container_name: nextjs-dashboard
+    build:
+      context: ./nextjs-dashboard
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    volumes:
+      - type: bind
+        source: ./nextjs-dashboard
+        target: /workspace
+        consistency: delegated
+      - type: volume
+        source: nextjs-dashboard-node_modules
+        target: /workspace/node_modules
+    command: sh -c "npm run dev"
+    ports:
+      - 11001:3000
+
+volumes:
+  nextjs-dashboard-node_modules:

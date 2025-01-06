@@ -1,10 +1,10 @@
 {
-    "name": "practice-next",
+    "name": "practice-nextjs",
     "dockerComposeFile": [
         "../compose.yml",
         "./compose.override.yml"
     ],
-    "service": "practice-next-console",
+    "service": "console",
     "workspaceFolder": "/workspace",
     "initializeCommand": "bash .devcontainer/initialize_command.sh",
     "overrideCommand": false,
@@ -20,8 +20,7 @@
                 // ファイル保存時に各行の末尾にある半角スペースを削除
                 "files.trimTrailingWhitespace": true
             },
-            "extensions": [
-            ]
+            "extensions": []
         }
     }
 }
