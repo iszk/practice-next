@@ -5,10 +5,12 @@ ENV \
 
 # install tools
 RUN \
-    apt-get update -y \
-    && apt-get install \
+    apt update -y \
+    && apt install \
         sudo \
         jq \
+        postgresql-client \
+        direnv \
         -y
 
 # 以降の操作ユーザーを切り替える

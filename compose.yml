@@ -22,6 +22,8 @@ services:
 
   nextjs-dashboard:
     container_name: nextjs-dashboard
+    env_file:
+      - ./nextjs-dashboard/.env
     build:
       context: ./nextjs-dashboard
       dockerfile: Dockerfile
@@ -38,5 +40,18 @@ services:
     ports:
       - 11001:3000
 
+  postgres:
+    container_name: postgres
+    image: postgres:14.7
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - 11099:5432
+    volumes:
+      - postgresql-local-data:/var/lib/postgresql/data
+
 volumes:
   nextjs-dashboard-node_modules:
+  postgresql-local-data:
